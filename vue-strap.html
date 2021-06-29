@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trying Vue.JS</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-4.1.3/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	<script type="text/javascript" src="jquery/jquery.js"></script>
+	<script type="text/javascript" src="vue/vue.js"></script>
+</head>
+<body>
+	<div id="app" class="container">
+		<div class="sticky-top p-2 pl-sm-5 m-sm-2" style="background-color: gray; color: white;">
+			<h2 class="ml-sm-2">Using Vue.js + BootStrap</h2>
+		</div>
+		<div class="row mb-3">
+			<div class="col-sm-4 col-lg-3 border-right position-relative">
+				<navigation-component class="position-fixed d-none d-sm-block ml-0"></navigation-component>
+			</div>
+			<div class="col-12 col-sm-8 bg-white">
+				<!-- <div class="border-bottom">
+					<label>Conectivity Status</label><br>
+					<input type="checkbox" v-model="status"> You are {{ statusState }}
+				</div> -->
+				<div class="m-1">
+					<em>Change the title of your shopping list here</em>
+					<input type="text" class="js-change-title" value="My Shopping List" v-model="title">
+				</div>
+				<div class="p-3 border shadow m-2 rounded">
+					<h2 class="pt-3 offset-1">{{ title }}</h2>
+					<div class="input-group">
+						<input type="text" v-model="newitem" v-on:keyup.enter="additem" placeholder="Add item" class="form-control offset-1 col-6">
+						<button class="btn btn-default mybtn ml-2 text-success" @click="additem" type="button">Add+</button>
+					</div>
+					<ul class="mt-2 m-sm-3">
+						<li v-for="(item, n) in items" v-bind:class="{'removed': item.checked }" :key="n">
+							<div class="checkbox font-weight-bold" >
+								<label class="w-50">
+									<input type="checkbox" v-model="item.checked">{{ item.text }}
+								</label> 
+								<span class="w-50"><button class="btn btn-sm btn-link text-danger font-weight-bold" @click="removeItem(n)">Remove</button></span> 
+							</div>
+						</li>
+					</ul>
+					<button class="btn btn-sm btn-danger offset-1" @click="removeItem('all')">Remove All</button>
+				</div>
+				<div class="m-2 mt-2 border p-4">
+					<h2>Using Dynamic component principle</h2>
+					<span class="ml-3 pointer" @click="changeView($event.target.innerHTML)"><strong><em>Home</em></strong></span>
+					<span class="ml-3 pointer" @click="changeView($event.target.innerHTML)"><strong><em>Contact us</em></strong></span>
+					<span class="ml-3 pointer" @click="changeView($event.target.innerHTML)"><strong><em>About us</em></strong></span>
+					<component class="p-3 mt-3 " v-bind:is="view"></component>
+				</div>
+
+				<div class="m-2 border p-2">
+					<strong class="m-3">Count Down  {{ timestamp }}</strong>
+					<button :class="counterClass" @click="toggleCounter">{{ countingMsg }}</button>
+				</div>
+
+				<div class="m-2 border p-2">
+					<p>{{ changeMessage }}</p>
+					<watch-component></watch-component>
+				</div>
+				
+				<div class="m-2 p-5 border shadow slot-area">
+					<slot-component>
+						For Testing Slot
+					</slot-component>
+				</div>
+				
+				<showmore-component class="text-center m-2 border"></showmore-component>
+
+				<!-- <computed-component class="m-2 p-3"></computed-component> -->
+
+				<search-component class="border shadow"></search-component>
+
+				<localstorage-component class="m-2 border p-3"></localstorage-component>
+			</div>
+		</div>
+		<div class="p-3 border-top">
+			<footer-component></footer-component>
+			<hr>
+			<div align="center">
+				<span class="font-weight-bold">&copy;2021, All Rights Reserved</span>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

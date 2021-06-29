@@ -1,0 +1,45 @@
+.removed{
+	color: gray;
+}
+.removed label{
+	text-decoration: line-through;
+}
+ul li{
+	list-style-type: none;
+}
+.mybtn:hover{
+	color: white;
+	background-color: gray;
+}
+.home{
+	background-color: gray;
+	color: white;
+}
+.contactus{
+	background-color: lightgreen;
+}
+.aboutus{
+	background-color: lightblue;
+}
+.pointer{
+	cursor: pointer;
+}
+.pointer:hover{
+	/*background-color: lightblue;*/
+}
+.slot-area span{
+	font-size: 2.4rem;
+	transition-duration: 0.45s;
+}
+.slot-area p{
+	font-size: 1.2rem;
+	transition-duration: 0.45s;
+}
+.slot-area:hover span{
+	font-size: 2.5rem;
+	transition-duration: 0.45s;
+}
+.slot-area:hover p{
+	font-size: 1.25rem;
+	transition-duration: 0.45s;
+}
